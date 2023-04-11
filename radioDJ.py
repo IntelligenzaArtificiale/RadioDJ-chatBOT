@@ -19,9 +19,9 @@ import writesonic
 with open('style.css')as f:
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html = True)
 
-img_html = " <center><img src='https://static.wixstatic.com/media/3c029f_7bb91a64433b4422aa475a7f200a63db~mv2.png'  height='200px' width='370px'></center> "
+img_html = " <center><img src='https://static.wixstatic.com/media/3c029f_7bb91a64433b4422aa475a7f200a63db~mv2.png'  height='200px' width='390px'></center> "
 st.markdown(img_html, unsafe_allow_html=True)
-
+sr.write(" ")
 if 'bot' not in st.session_state:
         st.session_state['user'] = []
         st.session_state['bot'] = []
