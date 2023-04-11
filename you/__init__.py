@@ -45,7 +45,7 @@ class Completion:
             "cookie"           : f'safesearch_guest=Moderate; uuid_guest={str(uuid4())}',
             "user-agent"        : ua.chrome
         }
-        print(ua.chrome)
+        print(client.headers)
         response = client.get(f"https://you.com/api/streamingSearch",  params = {
                 "q"              : prompt,
                 "page"           : page,
