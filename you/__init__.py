@@ -39,7 +39,7 @@ class Completion:
             "user-agent"        : ua.chrome
         }
         print(ua.chrome)
-        response = client.get(f"https://you.com/api/streamingSearch",  cookies={'from-my': 'browser'},  params = {
+        response = client.get(f"https://you.com/api/streamingSearch",  verify=False,  params = {
                 "q"              : prompt,
                 "page"           : page,
                 "count"          : count,
