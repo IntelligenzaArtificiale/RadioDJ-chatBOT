@@ -35,9 +35,9 @@ class Completion:
             "sec-fetch-mode"    : "cors",
             "sec-fetch-site"    : "same-origin",
             'cookie'            : f'safesearch_guest=Moderate; uuid_guest={str(uuid4())}',
-            "user-agent"        : ua.random
+            "user-agent"        : ua.chrome
         }
-        print(ua.random)
+        print(ua.chrome)
         response = client.get(f"https://you.com/api/streamingSearch", params = {
                 "q"              : prompt,
                 "page"           : page,
