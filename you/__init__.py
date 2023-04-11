@@ -22,7 +22,7 @@ class Completion:
         debug           : bool = False ) -> dict:
         
         client         = Session(client_identifier="chrome110")
-        client.cookies = {}
+        client.cookies = None
         client.headers = {
             "authority"         : "you.com",
             "accept"            : "text/event-stream",
