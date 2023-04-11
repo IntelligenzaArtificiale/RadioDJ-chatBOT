@@ -23,7 +23,7 @@ class Completion:
         
         client         = Session(client_identifier="chrome110")
         #enable cookie to avoid "Enable JavaScript and cookies to continue"
-        client.cookies = True
+        client.cookies = f'safesearch_guest=Moderate; uuid_guest={str(uuid4())}'
         client.headers = {
             "authority"         : "you.com",
             "accept"            : "text/event-stream",
