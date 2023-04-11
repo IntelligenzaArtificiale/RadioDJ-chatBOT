@@ -1,4 +1,6 @@
-footer {visibility: hidden;} 
+#MainMenu {visibility: hidden;}
+footer {visibility: hidden;}
+header {visibility: hidden;}
 .css-1x8cf1d {  
 display: inline-flex;  
 -webkit-box-align: center;  
