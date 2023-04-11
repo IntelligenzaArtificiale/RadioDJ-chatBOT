@@ -22,7 +22,7 @@ class Completion:
         debug           : bool = False ) -> dict:
         
         client         = Session(client_identifier="chrome110")
-        client.cookies.set("safesearch_guest", "Moderate")
+        
         client.headers = {
             "authority"         : "you.com",
             "accept"            : "text/event-stream",
@@ -39,7 +39,7 @@ class Completion:
             "user-agent"        : ua.chrome
         }
         print(ua.chrome)
-        response = client.get(f"https://you.com/api/streamingSearch", params = {
+        response = client.get(f"https://you.com/api/streamingSearch",  cookies={'from-my': 'browser'},  params = {
                 "q"              : prompt,
                 "page"           : page,
                 "count"          : count,
@@ -77,4 +77,3 @@ class Completion:
             'response': text,
             'links'   : loads(thirdPartySearchResults)['search']["third_party_search_results"] if includelinks else None,
             'extra'   : extra if detailed else None,
-        }
