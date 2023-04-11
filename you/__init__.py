@@ -3,6 +3,8 @@ from re         import findall
 from json       import loads, dumps
 from uuid       import uuid4
 from fake_useragent import UserAgent
+from requests.cookies import RequestsCookieJar
+
 ua = UserAgent()
 
 class Completion:
@@ -21,9 +23,12 @@ class Completion:
         detailed        : bool = False,
         debug           : bool = False ) -> dict:
         
+        cookies = RequestsCookieJar()
+        cookies.set('safesearch_guest', 'Moderate')
+        cookies.set('uuid_guest', str(uuid4()))
         client         = Session(client_identifier="chrome110")
-        #enable cookie to avoid "Enable JavaScript and cookies to continue"
-        client.cookies = f'safesearch_guest=Moderate; uuid_guest={str(uuid4())}'
+        
+        client.cookies = cookies
         client.headers = {
             "authority"         : "you.com",
             "accept"            : "text/event-stream",
