@@ -20,7 +20,7 @@ class Completion:
         detailed        : bool = False,
         debug           : bool = False ) -> dict:
         
-        client         = Session(client_identifier="chrome_108")
+        client         = Session(client_identifier="chrome110")
         client.headers = {
             "authority"         : "you.com",
             "accept"            : "text/event-stream",
