@@ -2,7 +2,8 @@ from tls_client   import Session
 from re         import findall
 from json       import loads, dumps
 from uuid       import uuid4
-
+from fake_useragent import UserAgent
+ua = UserAgent()
 
 class Completion:
     def create(
@@ -34,9 +35,9 @@ class Completion:
             "sec-fetch-mode"    : "cors",
             "sec-fetch-site"    : "same-origin",
             'cookie'            : f'safesearch_guest=Moderate; uuid_guest={str(uuid4())}',
-            "user-agent"        : 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36',
+            "user-agent"        : ua.random
         }
-
+        print(ua.random)
         response = client.get(f"https://you.com/api/streamingSearch", params = {
                 "q"              : prompt,
                 "page"           : page,
