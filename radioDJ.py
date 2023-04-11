@@ -28,10 +28,16 @@ if 'bot' not in st.session_state:
         # mostra il messaggio di benvenuto
         st.session_state['bot'].append('Ciao, sono Il ChatBOT di RADIO Deejay.it 🚀 creato da Intelligenza Artificiale Italia 🧠🤖🇮🇹, puoi chiedermi di spiegarti qualunque cosa e ti risponderò il prima possibile in stile rap o trap 🚀 \n\n🤖 Buon divertimento e ricorda usami in modo responsabile!')
         st.session_state['chat'] = []
-        with st.spinner('Caricamento in corso...'):
-            account = writesonic.Account.create(logging = True)
-            st.session_state['account'] = account
-
+        try:
+            with st.spinner('Caricamento in corso...'):
+                account = writesonic.Account.create(logging = True)
+                st.session_state['account'] = account
+        except Exception as e:
+            del st.session_state['account']
+            del st.session_state['bot']
+            del st.session_state['user']
+            st.experimental_rerun()
+            
  # aggiunge il messaggio in chat
 def add_message(content, sender):
     if sender == 'bot':
@@ -81,7 +87,8 @@ if col2.button("Chiedi 🚀") and prompt != '':
     with st.spinner('🚀 Sto generando la risposta...'):
         response = writesonic.Completion.create(
             api_key = st.session_state['account'].key,
-            prompt  = 'hello world'
+            prompt  = template,
+            enable_google_results = False
         )
     
         
