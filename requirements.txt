@@ -3,3 +3,4 @@ requests
 tls-client
 streamlit-chat-media
 fake-useragent
+names
