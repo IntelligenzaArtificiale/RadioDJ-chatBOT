@@ -22,6 +22,7 @@ class Completion:
         debug           : bool = False ) -> dict:
         
         client         = Session(client_identifier="chrome110")
+        client.cookies = { "safesearch_guest": "Moderate", "uuid_guest": str(uuid4()) }
         client.headers = {
             "authority"         : "you.com",
             "accept"            : "text/event-stream",
