@@ -78,6 +78,7 @@ if col2.button("Chiedi 🚀") and prompt != '':
             prompt       = template,
             detailed     = True,
             includelinks = False,
+            debug=True,
             chat=st.session_state['chat'])
     
         
