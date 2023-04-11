@@ -22,9 +22,7 @@ class Completion:
         debug           : bool = False ) -> dict:
         
         client         = Session(client_identifier="chrome110")
-        client.cookies = {
-            "mybroyser"  : "ok"
-        }
+        client.cookies.update({ "mybroyser" : "ok" })
         client.headers = {
             "authority"         : "you.com",
             "accept"            : "text/event-stream",
