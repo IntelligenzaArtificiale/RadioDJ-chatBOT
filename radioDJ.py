@@ -12,7 +12,9 @@ st.set_page_config(
 )
 
 from streamlit_chat_media import message
-import you
+import writesonic
+
+# create account (3-4s)
 
 with open('style.css')as f:
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html = True)
@@ -26,6 +28,9 @@ if 'bot' not in st.session_state:
         # mostra il messaggio di benvenuto
         st.session_state['bot'].append('Ciao, sono Il ChatBOT di RADIO Deejay.it 🚀 creato da Intelligenza Artificiale Italia 🧠🤖🇮🇹, puoi chiedermi di spiegarti qualunque cosa e ti risponderò il prima possibile in stile rap o trap 🚀 \n\n🤖 Buon divertimento e ricorda usami in modo responsabile!')
         st.session_state['chat'] = []
+        with st.spinner('Caricamento in corso...'):
+            account = writesonic.Account.create(logging = True)
+            st.session_state['account'] = account
 
  # aggiunge il messaggio in chat
 def add_message(content, sender):
@@ -74,17 +79,15 @@ prompt = col1.text_input("🤔 Cosa vuoi che ti spiego ... Ad esempio 'Radio' o 
 if col2.button("Chiedi 🚀") and prompt != '':
     template = f"Genera una spiegazione in stile RAP o TRAP su {prompt}, utilizzando delle rime in italiano"
     with st.spinner('🚀 Sto generando la risposta...'):
-        response = you.Completion.create(
-            prompt       = template,
-            detailed     = True,
-            includelinks = False,
-            debug=True,
-            chat=st.session_state['chat'])
+        response = writesonic.Completion.create(
+            api_key = st.session_state['account'].key,
+            prompt  = 'hello world'
+        )
     
         
         add_message(prompt, 'user')
-        add_message(decodifica_stringa(stringa=response["response"]), 'bot')        
-        st.session_state['chat'].append({"question": prompt, "answer": decodifica_stringa(stringa=response["response"])})
+        add_message(response.completion.choices[0].text, 'bot')        
+        st.session_state['chat'].append({"question": prompt, "answer": response.completion.choices[0].text})
         
 if 'bot' in st.session_state:
     i = len(st.session_state['bot']) - 1
