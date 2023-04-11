@@ -73,7 +73,6 @@ col1, col2 = st.columns([3, 1])
 prompt = col1.text_input("🤔 Cosa vuoi che ti spiego ... Ad esempio 'Radio' o 'Intelligenza Artificiale'")
 if col2.button("Chiedi 🚀") and prompt != '':
     template = f"Genera una spiegazione in stile RAP o TRAP su {prompt}, utilizzando delle rime in italiano"
-    import ora
     with st.spinner('🚀 Sto generando la risposta...'):
         response = you.Completion.create(
             prompt       = template,
