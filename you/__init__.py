@@ -51,6 +51,7 @@ class Completion:
             }
         )
         
+        print(response.status_code)
         
         if debug:
             print('\n\n------------------\n\n')
