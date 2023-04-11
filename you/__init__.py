@@ -77,3 +77,4 @@ class Completion:
             'response': text,
             'links'   : loads(thirdPartySearchResults)['search']["third_party_search_results"] if includelinks else None,
             'extra'   : extra if detailed else None,
+        }
