@@ -19,7 +19,7 @@ import writesonic
 with open('style.css')as f:
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html = True)
 
-img_html = " <center><img src='https://static.wixstatic.com/media/3c029f_7bb91a64433b4422aa475a7f200a63db~mv2.png' class='img-fluid' height='250px' width='auto'></center> "
+img_html = " <center><img src='https://static.wixstatic.com/media/3c029f_7bb91a64433b4422aa475a7f200a63db~mv2.png'  height='250px' width='auto'></center> "
 st.markdown(img_html, unsafe_allow_html=True)
 
 if 'bot' not in st.session_state:
