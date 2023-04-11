@@ -23,12 +23,13 @@ class Completion:
         detailed        : bool = False,
         debug           : bool = False ) -> dict:
         
-        cookies = RequestsCookieJar()
-        cookies.set('safesearch_guest', 'Moderate')
-        cookies.set('uuid_guest', str(uuid4()))
+        cookies2 = RequestsCookieJar()
+        cookies2.set('safesearch_guest', 'Moderate')
+        cookies2.set('uuid_guest', str(uuid4()))
         client         = Session(client_identifier="chrome110")
         
-        client.cookies = cookies
+        client.cookies = cookies2
+
         client.headers = {
             "authority"         : "you.com",
             "accept"            : "text/event-stream",
